@@ -1,0 +1,10 @@
+target/
+.vscode/
+.idea/
+.DS_Store
+
+command.txt
+
+factures-generees/*
+facture_client_*.pdf
+dependency-reduced-pom.xml

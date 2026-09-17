@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="3.0"
+    xmlns="https://jakarta.ee/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+    <persistence-unit name="facturePU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <!-- Configuration JDBC H2 In-Memory -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+            <property name="jakarta.persistence.jdbc.url"
+                value="jdbc:h2:mem:facturation_db;DB_CLOSE_DELAY=-1" />
+            <property name="jakarta.persistence.jdbc.user" value="admin" />
+            <property name="jakarta.persistence.jdbc.password" value="admin" />
+            <!-- Génère un fichier SQL avec le schéma complet au démarrage -->
+            <property name="jakarta.persistence.schema-generation.scripts.action" value="create" />
+            <!-- Indique à Hibernate de créer les tables directement en base -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+            <property name="jakarta.persistence.sql-load-script-source" value="import.sql" />
+            <property name="hibernate.hbm2ddl.import_files_sql_extractor"
+                value="org.hibernate.tool.schema.internal.script.MultiLineSqlScriptExtractor" />
+            <property name="jakarta.persistence.schema-generation.scripts.create-target"
+                value="schema.sql" />
+
+            <!-- Configuration Hibernate -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>
